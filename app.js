@@ -4,7 +4,7 @@ let won = false;
 //alert(currentPlayer);
 
 function place(box) {
-  if (box.innerText != "") return;
+  if (box.innerText != "" || won) return;
   box.innerText = currentPlayer;
   
     currentPlayer == "O" ? currentPlayer = "X" : currentPlayer = "O";
@@ -49,4 +49,11 @@ function checkGameBoard() {
   if (firstD2 != "" && firstD2 == secondD2 && firstD2 == thirdD2) {
     alert("Winner!");
   }
+}
+
+function checkWinner(first, second, third) {
+ if (first != "" && first == second && first == third) {
+     alert("Winner!");
+     won = true;
+ }
 }
