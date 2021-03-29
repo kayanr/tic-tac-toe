@@ -6,9 +6,7 @@ let won = true;
 function place(box) {
   if (box.innerText != "") return;
   box.innerText = currentPlayer;
-  if (currentPlayer == "O") {
-    currentPlayer = "X";
-  } else {
-    currentPlayer = "O";
+  
+  currentPlayer == "O" ? currentPlayer = "X": currentPlayer = "O";
   }
 }
