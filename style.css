@@ -41,3 +41,12 @@ h1{align-self: center;}
     justify-content: center;
     align-self: center;
 }
+
+span{
+    text-transform: capitalize;
+    border: solid black;
+    
+}
+h3{
+    text-align: center;
+}
