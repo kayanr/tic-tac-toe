@@ -1,6 +1,6 @@
 let currentPlayer = "O";
 let numberOfPlayers = 2;
-let won = true;
+let won = false;
 //alert(currentPlayer);
 
 function place(box) {
