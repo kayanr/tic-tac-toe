@@ -1,46 +1,52 @@
-let currentPlayer = "O";
+let currentPlayer = "orange";
 let won = false;
-//alert(currentPlayer);
 
 function place(box) {
-  if (box.innerText != "" || won) return;
+  if (box.style.backgroundColor != "" || won) return;
+  document.getElementById(
+    "currentPlayer"
+  ).innerHTML = ` <span style="color:${currentPlayer}"> 
+    ${currentPlayer}'s turn </span>`;
+  box.style.backgroundColor = currentPlayer;
 
-  box.innerText = currentPlayer;
-
-  currentPlayer == "O" ? (currentPlayer = "X") : (currentPlayer = "O");
   checkGameBoard();
+  //next player
+  currentPlayer == "orange"
+    ? (currentPlayer = "blue")
+    : (currentPlayer = "orange");
 }
 
 function checkGameBoard() {
   for (let i = 0; i <= 2; i++) {
-    //check the columns on the board
-    let colFirst = document.getElementById(i + "_0").innerText;
-    let colSecond = document.getElementById(i + "_1").innerText;
-    let colThird = document.getElementById(i + "_2").innerText;
+    //check the columns on the board for a winner
+    let colFirst = document.getElementById(i + "_0").style.backgroundColor;
+    let colSecond = document.getElementById(i + "_1").style.backgroundColor;
+    let colThird = document.getElementById(i + "_2").style.backgroundColor;
     checkWinner(colFirst, colSecond, colThird);
-    //check the rows on the board
-    let rowFirst = document.getElementById("0_" + i).innerText;
-    let rowSecond = document.getElementById("1_" + i).innerText;
-    let rowThird = document.getElementById("2_" + i).innerText;
+    //check the rows on the board for a winner
+    let rowFirst = document.getElementById("0_" + i).style.backgroundColor;
+    let rowSecond = document.getElementById("1_" + i).style.backgroundColor;
+    let rowThird = document.getElementById("2_" + i).style.backgroundColor;
     checkWinner(rowFirst, rowSecond, rowThird);
   }
 
-  //check first diagonal
-  let firstD1 = document.getElementById("0_0").innerText;
-  let secondD1 = document.getElementById("1_1").innerText;
-  let thirdD1 = document.getElementById("2_2").innerText;
+  //check first diagonal is a winner
+  let firstD1 = document.getElementById("0_0").style.backgroundColor;
+  let secondD1 = document.getElementById("1_1").style.backgroundColor;
+  let thirdD1 = document.getElementById("2_2").style.backgroundColor;
   checkWinner(firstD1, secondD1, thirdD1);
 
-  //check second diagonal
-  let firstD2 = document.getElementById("0_2").innerText;
-  let secondD2 = document.getElementById("1_1").innerText;
-  let thirdD2 = document.getElementById("2_0").innerText;
+  //check is second diagonal is a winner
+  let firstD2 = document.getElementById("0_2").style.backgroundColor;
+  let secondD2 = document.getElementById("1_1").style.backgroundColor;
+  let thirdD2 = document.getElementById("2_0").style.backgroundColor;
   checkWinner(firstD2, secondD2, thirdD2);
 }
 
+//check winner function
 function checkWinner(first, second, third) {
   if (first != "" && first == second && first == third) {
-    alert("Winner!");
     won = true;
+    alert(`${currentPlayer} is the Winner!`);
   }
 }
